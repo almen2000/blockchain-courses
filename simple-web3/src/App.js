@@ -16,20 +16,20 @@ function App() {
       } else {
         accountAddress = account;
       }
-      console.log(accountAddress);
-      console.log(abi);
 
-      const contract = new web3.eth.Contract(
-        abi,
-        "0x080D769887Bdc29ed16D690532B0AB17FE1c2A71"
-      );
-      console.log(contract);
+      const contractAddr = "0x623df7fcf3ad2fa11cd28a59408cffc3f1bee2f2";
 
-      //call a method
-      const balance = await contract.methods
-        .mint(accountAddress, "1000000000000000000")
+      const contract = new web3.eth.Contract(abi, contractAddr);
+
+      // method call example
+      const count = await contract.methods.getCount().call();
+      console.log(count.toString());
+
+      // transaction example on metamask
+      const tx = await contract.methods
+        .increment()
         .send({ from: accountAddress });
-      console.log(balance.toString());
+      console.log(tx);
     } catch (error) {
       console.log(error);
     }
