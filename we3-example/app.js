@@ -7,7 +7,6 @@ const compiledContract = require("./compiledFile.json");
 const api = process.env.API_KEY;
 const PK = process.env.PRIVATE_KEY;
 
-console.log(api);
 const rpc = `https://eth-goerli.g.alchemy.com/v2/${api}`;
 // const contractAddr = "0x623df7fcf3ad2fa11cd28a59408cffc3f1bee2f2";
 
@@ -59,6 +58,7 @@ const main = async () => {
     signedTransaction.rawTransaction
   );
   console.log("transaction sent successfully");
+  console.log(response);
 
   // call a view method
   const count = await contract.methods.getCount().call();
