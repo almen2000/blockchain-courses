@@ -4,7 +4,7 @@ require("@nomicfoundation/hardhat-toolbox");
 
 const api = process.env.API_KEY;
 const PK = process.env.PRIVATE_KEY;
-const etherscanKey = process.env.
+const etherscanKey = process.env.ETHERSCAN_KEY;
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -25,6 +25,6 @@ module.exports = {
     },
   },
   etherscan: {
-    apiKey: ""
-  }
+    apiKey: etherscanKey,
+  },
 };
