@@ -2,8 +2,9 @@
 pragma solidity ^0.8.17;
 
 contract SimpleContract {
-    uint256 public contractBalance;
     uint256 public constructorValue;
+    uint256 public contractBalance;
+    uint256 public someAmount;
     uint16 private _someValue1;
     address private _owner;
     uint32 private _someValue2;
@@ -28,11 +29,16 @@ contract SimpleContract {
     }
 
     function deposit() public payable {
-        contractBalance += contractBalance;
+        contractBalance += msg.value;
     }
 
     function withdraw(uint256 amount) public {
         payable(msg.sender).transfer(amount);
         contractBalance -= amount;
+    }
+
+    function setNewValue(uint256 newValue_) public returns (uint256) {
+        someAmount += newValue_;
+        return someAmount;
     }
 }
